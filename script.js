@@ -1,5 +1,6 @@
 const weatherBlock = document.querySelector("#weather");
 
+
 async function loadWeather(value) {
   weatherBlock.innerHTML = `
     <div class="weather__loading">
@@ -18,7 +19,7 @@ async function loadWeather(value) {
   const responseResult = await response.json();
 
   if (response.ok) {
-    getWeather(responseResult);
+    setTimeout(() => getWeather(responseResult),1000);
   } else {
     weatherBlock.innerHTML = responseResult.message;
   }
@@ -44,7 +45,7 @@ function getWeather(data) {
     <div class="weather__temp">${temp}</div>
     <div class="weather__feels-like">Feels like: ${feelsLike}</div>`;
 
-    weatherBlock.innerHTML = template;
+  weatherBlock.innerHTML = template;
 }
 
 if (weatherBlock) {
